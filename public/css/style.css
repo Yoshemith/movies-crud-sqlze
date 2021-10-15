@@ -17,3 +17,24 @@ img{
 figure{
   width: 20%;
 }
+
+#lista {
+  font-family:Arial;
+  font-weight:bold;
+  font-size:13px;
+}
+.separador {
+  color:gray;
+}
+#lista li {
+   display:inline;
+   padding-left:3px;
+   padding-right:3px;
+}
+a {
+  text-decoration:none;
+}
+a:hover {
+  color:red;
+  background-color:lightgray;
+}
