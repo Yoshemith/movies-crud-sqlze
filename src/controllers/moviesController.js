@@ -42,10 +42,19 @@ const moviesController = {
             });
     }, //Aqui debemos modificar y completar lo necesario para trabajar con el CRUD
     add: function (req, res) {
-        // TODO   
+        return res.render('moviesAdd.ejs');  
     },
     create: function (req, res) {
-        // TODO
+        db.Movie.create({
+           title: req.body.title,
+           rating: req.body.rating,
+           awards: req.body.awards,
+           release_date: req.body.release_date,
+           length: req.body.length
+        })
+            .then(movies => {
+                res.redirect('/movies');
+            });
     },
     edit: function(req, res) {
         // TODO

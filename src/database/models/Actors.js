@@ -22,7 +22,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.DECIMAL
         },
         favorite_movie_id: {
-            type: dataTypes.INT
+            type: dataTypes.INTEGER
         }
     };
     let config = {
