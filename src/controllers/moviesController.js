@@ -50,20 +50,43 @@ const moviesController = {
            rating: req.body.rating,
            awards: req.body.awards,
            release_date: req.body.release_date,
-           length: req.body.length
+           length: req.body.length,
+           genre_id: req.body.genre_id
         })
-            .then(movies => {
-                res.redirect('/movies');
-            });
+        .then(() => {
+            return res.redirect('/movies');
+        })
+        .catch(error => {res.render(error)});
     },
     edit: function(req, res) {
-        // TODO
+        db.Movie.findByPk(req.params.id)
+            .then(Movie => {
+                return res.render('moviesEdit.ejs', {Movie});
+            }); 
     },
     update: function (req,res) {
-        // TODO
+        db.Movie.update({
+            title: req.body.title,
+            rating: req.body.rating,
+            awards: req.body.awards,
+            release_date: req.body.release_date,
+            length: req.body.length,
+            genre_id: req.body.genre_id
+         },{
+             where: {
+                 id: req.params.id
+             }
+         })
+         .then(() => {
+             return res.redirect('/movies');
+         })
+         .catch(error => {res.render(error)});
     },
     delete: function (req, res) {
-        // TODO
+        db.Movie.findByPk(req.params.id)
+            .then(Movie => {
+                return res.render('moviesDelete.ejs', {Movie});
+            }); 
     },
     destroy: function (req, res) {
         // TODO

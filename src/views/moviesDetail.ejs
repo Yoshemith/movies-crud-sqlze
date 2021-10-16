@@ -18,6 +18,8 @@
     <p>AWARDS: <%= movie.awards %> </p>
     <p>LENGTH: <%= movie.length + ' min'%> </p>
     <p>RELEASE DATE: <%= movie.release_date %> </p>
-
+    <br>
+    <a  class="botonUpdate" href="/movies/edit/<%= movie.id %>">Editar Pelicula</a></p>
+    <a  class="botonDelte" href="/movies/delete/<%= movie.id %>">Eliminar pelicula</a></p>
 </body>
 </html>
