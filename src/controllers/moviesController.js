@@ -64,7 +64,7 @@ const moviesController = {
                 return res.render('moviesEdit.ejs', {Movie});
             }); 
     },
-    update: function (req,res) {
+    update: function (req, res) {
         db.Movie.update({
             title: req.body.title,
             rating: req.body.rating,
@@ -89,7 +89,15 @@ const moviesController = {
             }); 
     },
     destroy: function (req, res) {
-        // TODO
+        db.Movie.destroy({
+            where:{
+                id: req.params.id
+            }
+        })
+        .then(() => {
+            return res.redirect('/movies');
+        })
+        .catch(error => {res.render(error)});
     }
 
 }
