@@ -12,7 +12,9 @@ const moviesController = {
             })
     },
     'detail': (req, res) => {
-        db.Movie.findByPk(req.params.id)
+        db.Movie.findByPk(req.params.id,{
+            include: [{association: 'genre'}, {association: 'actors'}]
+        })
             .then(movie => {
                 res.render('moviesDetail.ejs', {movie});
             });
@@ -42,7 +44,10 @@ const moviesController = {
             });
     }, //Aqui debemos modificar y completar lo necesario para trabajar con el CRUD
     add: function (req, res) {
-        return res.render('moviesAdd.ejs');  
+        db.Genre.findAll()
+        .then(genres => {
+            return res.render('moviesAdd.ejs', {genres})
+        }) 
     },
     create: function (req, res) {
         db.Movie.create({

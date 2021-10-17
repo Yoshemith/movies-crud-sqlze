@@ -18,6 +18,11 @@
     <p>AWARDS: <%= movie.awards %> </p>
     <p>LENGTH: <%= movie.length + ' min'%> </p>
     <p>RELEASE DATE: <%= movie.release_date %> </p>
+    <p>GENRE: <%= movie.genre.name %> </p>
+    <p>ACTORS: </p>
+        <% for (let i = 0; i < movie.actors.length; i++) { %>
+            <p>---> <%= movie.actors[i].first_name %> <%= movie.actors[i].last_name %></p> 
+        <% } %>
     <br>
     <a  class="botonUpdate" href="/movies/edit/<%= movie.id %>">Editar Pelicula</a></p>
     <a  class="botonDelte" href="/movies/delete/<%= movie.id %>">Eliminar pelicula</a></p>
