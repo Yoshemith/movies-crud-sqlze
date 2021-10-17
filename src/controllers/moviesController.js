@@ -64,10 +64,18 @@ const moviesController = {
         .catch(error => {res.render(error)});
     },
     edit: function(req, res) {
-        db.Movie.findByPk(req.params.id)
+        let movieToEdit = db.Movie.findByPk(req.params.id);
+        let genresAll = db.Genre.findAll();
+
+        Promise.all([movieToEdit, genresAll])
+            .then(function([Movie, genres]){
+                return res.render('moviesEdit.ejs', {Movie, genres});
+            });
+        
+        /* db.Movie.findByPk(req.params.id)
             .then(Movie => {
                 return res.render('moviesEdit.ejs', {Movie});
-            }); 
+            });  */
     },
     update: function (req, res) {
         db.Movie.update({
@@ -83,7 +91,7 @@ const moviesController = {
              }
          })
          .then(() => {
-             return res.redirect('/movies');
+             return res.redirect('/movies/detail/' + req.params.id);
          })
          .catch(error => {res.render(error)});
     },
