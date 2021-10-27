@@ -42,7 +42,11 @@ const moviesController = {
             .then(movies => {
                 res.render('recommendedMovies.ejs', {movies});
             });
-    }, //Aqui debemos modificar y completar lo necesario para trabajar con el CRUD
+    }, 
+    'search':  (req, res) => {
+
+    },
+    //Aqui debemos modificar y completar lo necesario para trabajar con el CRUD
     add: function (req, res) {
         db.Genre.findAll()
         .then(genres => {
@@ -64,18 +68,14 @@ const moviesController = {
         .catch(error => {res.render(error)});
     },
     edit: function(req, res) {
-        let movieToEdit = db.Movie.findByPk(req.params.id);
+        let movieToEdit = db.Movie.findByPk(req.params.id,{include: ['genre','actors']});
         let genresAll = db.Genre.findAll();
 
-        Promise.all([movieToEdit, genresAll])
+        Promise
+        .all([movieToEdit, genresAll])
             .then(function([Movie, genres]){
                 return res.render('moviesEdit.ejs', {Movie, genres});
             });
-        
-        /* db.Movie.findByPk(req.params.id)
-            .then(Movie => {
-                return res.render('moviesEdit.ejs', {Movie});
-            });  */
     },
     update: function (req, res) {
         db.Movie.update({
