@@ -8,7 +8,9 @@ const indexRouter = require('./routes/index');
 const moviesRoutes = require('./routes/moviesRoutes');
 const genresRoutes = require('./routes/genresRoutes');
 //API
+const apiMoviesRouter = require('./routes/api/movies')
 const apiGenresRouter = require('./routes/api/genres');
+const apiActorsRouter = require('./routes/api/actors')
 
 const app = express();
 
@@ -27,6 +29,8 @@ app.use(moviesRoutes);
 app.use(genresRoutes);
 
 //API routes
-app.use('/api/genres', apiGenresRouter);
+app.use('/api/movies',apiMoviesRouter);
+app.use('/api/actors',apiActorsRouter);
+app.use('/api/genres',apiGenresRouter);
 
 app.listen('3001', () => console.log('Servidor corriendo en el puerto 3001'));
