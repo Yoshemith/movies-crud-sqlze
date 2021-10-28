@@ -1,8 +1,11 @@
 const db = require('../database/models');
 const sequelize = db.sequelize;
+const fetch = require('node-fetch');
 
 //Otra forma de llamar a los modelos
 const Movies = db.Movie;
+const API = 'http://www.omdbapi.com/?apikey=d4e35e92';
+
 
 const moviesController = {
     'list': (req, res) => {
@@ -44,7 +47,15 @@ const moviesController = {
             });
     }, 
     'search':  (req, res) => {
-
+        let titulo = req.body.titulo;
+        //Consumiendo API con node fetch
+        fetch(`${API}&t=`+ titulo)
+        .then(response => response.json())
+        .then(movie => {
+            res.render('moviesDetailOmdb.ejs', {movie});
+        })
+        .catch(error => res.send(error));
+          
     },
     //Aqui debemos modificar y completar lo necesario para trabajar con el CRUD
     add: function (req, res) {
