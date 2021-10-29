@@ -38,3 +38,8 @@ a:hover {
   color:red;
   background-color:lightgray;
 }
+.fondo{
+  background-image: url('/img/vikingsposter.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
