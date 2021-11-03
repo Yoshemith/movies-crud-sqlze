@@ -43,3 +43,8 @@ a:hover {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.fondo2{
+  background-image: url('/img/americanposter.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
