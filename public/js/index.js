@@ -19,5 +19,13 @@ window.onload = function(){
         fondo.classList.add('fondo');
     }
 
+    let logo = document.querySelector(".logoDH img");
+    let menu = document.querySelector("#menu");
+    logo.addEventListener("click", (e)=>{
+        menu.classList.toggle("mostrar");
+    });
+    logo.addEventListener("mouseout", (e)=>{
+        menu.classList.remove("mostrar");
+    });
 
 }
