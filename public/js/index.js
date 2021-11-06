@@ -19,7 +19,7 @@ window.onload = function(){
         fondo.classList.add('fondo');
     }
 
-    let logo = document.querySelector(".logoDH img");
+    let logo = document.querySelector("figure img");
     let menu = document.querySelector("#menu");
     logo.addEventListener("click", (e)=>{
         menu.classList.toggle("mostrar");
